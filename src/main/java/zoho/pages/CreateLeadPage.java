@@ -18,8 +18,8 @@ public class CreateLeadPage {
         List<Map<String,String>> rows = dataTable.asMaps(String.class, String.class);
         app.type("lead_first_name_id", rows.get(0).get("FirstName"));
         app.type("lead_last_name_id", rows.get(0).get("LastName"));
-        app.type("lead_company_id", rows.get(0).get("email"));
-        app.type("lead_email_id", rows.get(0).get("Company"));
+        app.type("lead_company_id", rows.get(0).get("Company"));
+        app.type("lead_email_id", rows.get(0).get("Email"));
         app.click("save_btn_id");
     }
 }

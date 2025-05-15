@@ -165,7 +165,7 @@ public class WebDriverManager {
     }
 
     public int getLeadRowNumberWithCellData(String leadName) {
-        List<WebElement> names = driver.findElements(getLocator("leadnames_css"));
+        List<WebElement> names = driver.findElements(getLocator("leadnames_xpath"));
         for(int i=0;i<names.size();i++) {
             if(leadName.equalsIgnoreCase(names.get(i).getText()))
                 return (i+1);
@@ -178,6 +178,6 @@ public class WebDriverManager {
         driver.findElement(By.cssSelector("lyte-exptable-tr:nth-child("+rowNum+") > lyte-exptable-td:nth-child(2) label")).click();
 
     }
-
+//*[@class='lyteExpTableRowGroup']/lyte-exptable-tr
 
 }

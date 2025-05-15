@@ -43,9 +43,10 @@ public class Leads {
         }
 
     @When("I go to create lead page")
-    public void iGoToCreateLeadPage(String pageName){
-        context.log("I go to "+pageName+" page");
+    public void iGoToCreateLeadPage(){
+        context.log("I go to create lead page");
         //System.out.println("I go to "+pageName+" page");
+        leadsDetailPage.goToCreateLeadPage();
     }
 
     @And("enter and submit the lead details")
@@ -57,7 +58,7 @@ public class Leads {
 
     @Then("Lead Description Page should load")
     public void verifyLeadDetailPage() {
-        leadDescriptionPage.hasLoaded();
+         leadDescriptionPage.hasLoaded();
     }
 
     @And("I verify lead details")
@@ -66,10 +67,11 @@ public class Leads {
        // System.out.println("I verify lead details");
     }
 
-    @Then("lead {string} should {string} inside the grid")
-    public void leadShouldBePresentInsideTheGrid(String leadName, String condition){
+    @Then("lead {string},{string} should {string} inside the grid")
+    public void leadShouldBePresentInsideTheGrid(String firstName, String lastName, String condition){
        // System.out.println("lead should be present inside the grid");
         context.log("lead should be present inside the grid");
+        String leadName = firstName+" "+lastName;
         if (condition.equals("be present")) {
             leadsDetailPage.validateLeadPresent(leadName);
         }else {

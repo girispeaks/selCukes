@@ -10,7 +10,7 @@ public class LeadsDescriptionPage {
     }
 
     public void hasLoaded() {
-        if(!app.isElementPresent("last_name_id")) {
+        if(!app.isElementPresent("section_title_id")) {
             app.logFailure("Lead Description Page has not loaded", true);
         }
 

@@ -10,7 +10,7 @@ public class LeadsDetailPage {
     }
 
     public void goToCreateLeadPage() {
-        app.click("createleadbutton_xp");
+        app.click("createleadbutton_xpath");
         if(!app.isElementPresent("lead_first_name_id")) {
             app.logFailure("Create Lead Page did not open", true);
         }
@@ -42,3 +42,5 @@ public class LeadsDetailPage {
     }
 
 }
+
+//div[@class='container2']/crm-create-fields/div/

@@ -15,10 +15,10 @@ Background: Logged In
     Then Lead Description Page should load
     And I verify lead details
     When I click on 'Leads' in the top menu
-    Then lead '<LeadName>' should 'be present' inside the grid
+    Then lead '<FirstName>','<LastName>' should 'be present' inside the grid
     Examples:
-      |FirstName|LastName|Email         |Company|
-      |fname1   |lname1  |mail@gmail.com|xyz    |
+      |FirstName|LastName|Email          |Company|
+      |James    |Daniel  |james@gmail.com|RDA    |
 
 
   @DeleteLead
