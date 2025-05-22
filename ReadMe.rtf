@@ -1,0 +1,54 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww25620\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 As the feature file has the steps implemented in multiple step definitions, we need to send the same WebDriver to all the step definitions.\
+This can be achieved using constructor dependency injection via pico-container.\
+Here pico container will create an object of TestContext and share it with other classes via constructor.\
+Pico container will call the constructors of all classes where the test context object needs to be injected.\
+\
+project.properties:\
+1) This file has all the locators of the web elements.\
+2) It will have application url and credentials.\
+\
+WebDriverManager:\
+1) The constructor of WebDriverManager is used to initiate the project.properties file.\
+2) This class will have all the reusable functions like initializing the browser, click, type, navigate etc which will use the locators via properties file initiated in the constructor.\
+3) This re-usuable functions will accept the locator key(present in properties file) as argument.\
+\
+\
+\
+PageOjbectManager::\
+1) The constructor of PageObjectManager is used to initiate WebDriverManager object.\
+2) This class has the function to return the WebDriverManager object initiated in the constructor.\
+3) This class has specific functions for each page which returns the object of corresponding page(WebDriverManager object is passed in each constructor of page). \
+\
+\
+TestContext:\
+1) The constructor of the TestContext will initiate the PageOjectManager object.\
+2) This constructor will initiate the Extent report as well.\
+3) This class has the function to return the PageObjectManager object initiated in the constructor.\
+4) This class has functions for logging purpose like createScenario, endScenario and log.\
+5) Here the createScenario is also used to pass the ExtentTest object to WebDriverManager via init function.\
+\
+Flow:\
+TestContext constructor is called first by PicoContainer.\
+As the @Before and @After is in Leads step definition page, the Leads step definition constructor is called first and then the @before function is executed.\
+Stepdefinition page constructor is called by passing TestContext object by PicoContainer whenever the stepDefinition class is called from Feature file. Basically all the step definition pages will share the same object of TestContext.\
+Before annotation function is called next.\
+Then remaining steps are run.\
+\
+Feature File:\
+1) Create a feature file for a particular test scenario.\
+\
+Step Definition:\
+1) Create one step definition for each page in the application.\
+2) Have the implementation of the steps mentioned in feature file in the corresponding step definition page.\
+3) These step definitions will call the pages having respective functions.\
+\
+\
+\
+}
